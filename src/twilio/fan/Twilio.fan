@@ -51,8 +51,8 @@ const class Twilio
     }
     catch (TwilioErr err)
     {
-      // treat 404 as invalid
-      if (err.code == 20404) return false
+      if (err.code == 20404) return false   // no session found for recipient
+      if (err.code == 60202) return false   // max_attemps exceeded
       throw err
     }
   }
